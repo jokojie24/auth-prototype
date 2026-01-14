@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Secure Login</title>
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Secure Login</h1>
+
+    <input id="email" placeholder="Email" />
+    <input id="password" type="password" placeholder="Password" />
+
+    <!-- Password & MFA (global functions) -->
+    <button class="btn-password" onclick="login()">
+      Login with Password
+    </button>
+
+    <button class="btn-mfa" onclick="startMFA()">
+      Login with OTP
+    </button>
+
+    <div class="divider">OR</div>
+
+    <!-- Passkey button (NO inline onclick) -->
+    <button class="btn-passkey" id="passkeyLoginBtn">
+      Login with Passkey
+    </button>
+  </div>
+
+  <!-- Classic JS (globals) -->
+  <script src="js/password.js"></script>
+  <script src="js/mfa.js"></script>
+
+  <!-- Module JS (Passkey) -->
+  <script type="module">
+    import { passkeyLogin } from "./js/passkey.js";
+
+    document
+      .getElementById("passkeyLoginBtn")
+      .addEventListener("click", passkeyLogin);
+  </script>
+
+</body>
+</html>

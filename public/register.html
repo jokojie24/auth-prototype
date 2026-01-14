@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Registration</title>
+
+  <!-- Global Professional Styling -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <h1>Create Account</h1>
+
+    <!-- User Credentials -->
+    <input id="email" placeholder="Email address" />
+    <input id="password" type="password" placeholder="Password" />
+
+    <button class="btn-password" onclick="register()">
+      Register User
+    </button>
+
+    <div class="divider">
+      After registering, secure your account with a passkey
+    </div>
+
+    <!-- Passkey Registration -->
+    <button class="btn-passkey" id="passkeyBtn">
+      Register Passkey (FIDO2)
+    </button>
+  </div>
+
+  <!-- Password / User Registration Logic -->
+  <script src="js/password.js"></script>
+
+  <!-- Passkey Registration Logic -->
+  <script type="module">
+    import { passkeyRegister } from "./js/passkey.js";
+
+    document
+      .getElementById("passkeyBtn")
+      .addEventListener("click", passkeyRegister);
+  </script>
+
+</body>
+</html>

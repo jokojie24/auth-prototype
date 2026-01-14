@@ -1,0 +1,29 @@
+{
+  "name": "auth-prototype",
+  "version": "1.0.0",
+  "description": "Authentication prototype comparing password, MFA, and passkey authentication",
+  "type": "module",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js"
+  },
+  "keywords": [
+    "authentication",
+    "mfa",
+    "webauthn",
+    "passkeys",
+    "security"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@simplewebauthn/browser": "^13.2.2",
+    "@simplewebauthn/server": "^13.2.2",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.2.1",
+    "express-session": "^1.18.2",
+    "sqlite3": "^5.1.7",
+    "uuid": "^13.0.0"
+  }
+}
