@@ -1,90 +1,251 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 * {
   box-sizing: border-box;
-  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 body {
   margin: 0;
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #e5e7eb;
+  background: radial-gradient(circle at top right, #334155, #1e293b, #0f172a);
+  color: #e2e8f0;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 20px;
 }
 
 .container {
-  background: #020617;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   width: 100%;
-  max-width: 420px;
-  padding: 32px;
-  border-radius: 14px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+  max-width: 400px;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card__header {
+  margin-bottom: 32px;
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
+  margin: 0 0 12px 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.025em;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtext {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.form {
+  display: grid;
+  gap: 16px;
   margin-bottom: 24px;
-  font-size: 1.6rem;
-  color: #f8fafc;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #cbd5e1;
 }
 
 input {
   width: 100%;
-  padding: 12px;
-  margin-bottom: 14px;
-  border-radius: 8px;
-  border: 1px solid #334155;
-  background: #020617;
-  color: #f8fafc;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  background: rgba(15, 23, 42, 0.6);
+  color: #fff;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+  background: rgba(15, 23, 42, 0.9);
 }
 
 input::placeholder {
-  color: #94a3b8;
+  color: #64748b;
 }
 
 button {
   width: 100%;
-  padding: 12px;
-  margin-top: 10px;
-  border-radius: 8px;
+  padding: 14px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
   font-size: 0.95rem;
   font-weight: 600;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  letter-spacing: 0.01em;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
 }
 
 button:hover {
-  transform: translateY(-1px);
-  opacity: 0.95;
+  transform: translateY(-2px);
+  filter: brightness(110%);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
 }
 
-.btn-password { background: #2563eb; color: #fff; }
-.btn-mfa      { background: #9333ea; color: #fff; }
-.btn-passkey  { background: #16a34a; color: #fff; }
+button:active {
+  transform: translateY(0);
+}
+
+.btn-password { 
+  background: cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(135deg, #3b82f6, #2563eb); 
+  color: #fff; 
+}
+
+.btn-mfa { 
+  background: linear-gradient(135deg, #a855f7, #9333ea); 
+  color: #fff; 
+}
+
+.btn-passkey { 
+  background: linear-gradient(135deg, #22c55e, #16a34a); 
+  color: #fff; 
+}
+
+/* Secondary/Ghost button style if needed */
+.btn-ghost {
+  background: transparent;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  color: #94a3b8;
+}
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+}
 
 .divider {
+  display: flex;
+  align-items: center;
   text-align: center;
-  margin: 20px 0;
-  color: #94a3b8;
-  font-size: 0.85rem;
+  margin: 24px 0;
+  color: #64748b;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
-/* Dashboard */
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.divider::before { margin-right: 12px; }
+.divider::after { margin-left: 12px; }
+
+/* For existing divider classes structure compatibility if needed */
+
+.divider-line {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+}
+.divider-line::before {
+  position: static;
+  flex: 1;
+  background: rgba(148, 163, 184, 0.15);
+}
+.divider-line::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(148, 163, 184, 0.15);
+}
+.divider-line span {
+  background: transparent;
+  padding: 0 12px;
+  color: #64748b;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+
+.hint, .small {
+  text-align: center;
+  margin-top: 16px;
+  color: #64748b;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+}
+
+.alert {
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.alert--error {
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+/* Dashboard specific */
 .dashboard {
-  max-width: 500px;
+  max-width: 600px;
   text-align: center;
 }
 
 .badge {
-  display: inline-block;
-  margin-top: 16px;
-  padding: 10px 16px;
-  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 24px;
+  padding: 12px 24px;
+  border-radius: 99px;
   font-weight: 600;
+  font-size: 0.95rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
-.badge-password { background: #2563eb; }
-.badge-mfa      { background: #9333ea; }
-.badge-passkey  { background: #16a34a; }
+.badge-password { background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; }
+.badge-mfa      { background: linear-gradient(135deg, #a855f7, #9333ea); color: white; }
+.badge-passkey  { background: linear-gradient(135deg, #22c55e, #16a34a); color: white; }

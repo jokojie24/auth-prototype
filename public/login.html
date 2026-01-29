@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Secure Login</title>
 
   <link rel="stylesheet" href="css/style.css" />
@@ -9,26 +10,46 @@
 <body>
 
   <div class="container">
-    <h1>Secure Login</h1>
+    <div class="card__header">
+      <h1>Secure Login</h1>
+      <p class="subtext">Choose a sign-in method. Passkeys help reduce phishing and credential reuse risk.</p>
+    </div>
 
-    <input id="email" placeholder="Email" />
-    <input id="password" type="password" placeholder="Password" />
+    <div class="alert alert--error" id="uiAlert" hidden></div>
 
-    <!-- Password & MFA (global functions) -->
-    <button class="btn-password" onclick="login()">
-      Login with Password
-    </button>
+    <div class="form">
+      <div>
+        <label for="email">Email</label>
+        <input id="email" placeholder="name@example.com" autocomplete="username" />
+      </div>
 
-    <button class="btn-mfa" onclick="startMFA()">
-      Login with OTP
-    </button>
+      <div>
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="••••••••" autocomplete="current-password" />
+      </div>
 
-    <div class="divider">OR</div>
+      <!-- Password & MFA (global functions) -->
+      <button class="btn-password" type="button" onclick="login()">
+        Login with Password
+      </button>
+
+      <button class="btn-mfa" type="button" onclick="startMFA()">
+        Login with OTP
+      </button>
+    </div>
+
+    <div class="divider-line"><span>OR</span></div>
 
     <!-- Passkey button (NO inline onclick) -->
-    <button class="btn-passkey" id="passkeyLoginBtn">
+    <button class="btn-passkey" id="passkeyLoginBtn" type="button">
       Login with Passkey
     </button>
+
+    <p class="hint">Tip: If passkey login doesn’t appear, ensure HTTPS or localhost and a supported browser.</p>
+    
+    <div style="text-align: center; margin-top: 1rem;">
+      <a href="index.html" style="color: #94a3b8; font-size: 0.85rem;">&larr; Back to Home</a>
+    </div>
   </div>
 
   <!-- Classic JS (globals) -->

@@ -14,7 +14,7 @@ export async function passkeyRegister() {
     return;
   }
 
-  // Step 1: Ask server for registration options
+  // Ask server for registration options
   const response = await fetch("/webauthn/register/begin", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -23,10 +23,10 @@ export async function passkeyRegister() {
 
   const options = await response.json();
 
-  // 🔴 DEBUG LOG (KEEP THIS)
+
   console.log("BEGIN REGISTRATION RESPONSE:", options);
 
-  // Step 2: Validate server response
+  // Validate server response
   if (options.error) {
     alert(options.error);
     return;
@@ -37,10 +37,9 @@ export async function passkeyRegister() {
     return;
   }
 
-  // Step 3: Create passkey via browser / OS
   const attResp = await startRegistration(options);
 
-  // Step 4: Send credential back to server for verification
+
   const finishResponse = await fetch("/webauthn/register/finish", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -71,7 +70,7 @@ export async function passkeyLogin() {
     return;
   }
 
-  // Step 1: Ask server for authentication options (WITH USER CONTEXT)
+  // Ask server for authentication options
   const response = await fetch("/webauthn/login/begin", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -80,10 +79,10 @@ export async function passkeyLogin() {
 
   const options = await response.json();
 
-  // 🔴 DEBUG LOG (KEEP THIS)
+
   console.log("BEGIN LOGIN RESPONSE:", options);
 
-  // Step 2: Validate login options
+  // Validate login options
   if (options.error) {
     alert(options.error);
     return;
@@ -94,12 +93,12 @@ export async function passkeyLogin() {
     return;
   }
 
-  // Step 3: Authenticate using passkey (v13+ correct call)
+  // Authenticate using passkey (v13+ correct call)
   const authResp = await startAuthentication({
     optionsJSON: options,
   });
 
-  // Step 4: Verify authentication on server (WITH USER CONTEXT)
+  // Verify authentication on server (WITH USER CONTEXT)
   const finishResponse = await fetch("/webauthn/login/finish", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -116,9 +115,8 @@ export async function passkeyLogin() {
     return;
   }
 
-  // ✅ FRONTEND-ONLY: store login method
   localStorage.setItem("loginMethod", "passkey");
 
-  // Redirect to dashboard
+
   window.location.href = "dashboard.html";
 }

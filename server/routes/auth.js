@@ -9,5 +9,9 @@ router.post("/login", login);
 router.post("/mfa/send", sendOTP);
 router.post("/mfa/verify", verifyOTP);
 
+import { requireMFA } from "../controllers/mfaController.js";
+router.get("/secure-data", requireMFA, (req, res) => {
+  res.json({ secret: "This data is protected by MFA session enforcement." });
+});
 
 export default router;

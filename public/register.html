@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>User Registration</title>
 
   <!-- Global Professional Styling -->
@@ -10,24 +11,44 @@
 <body>
 
   <div class="container">
-    <h1>Create Account</h1>
+    <div class="card__header">
+      <h1>Create Account</h1>
+      <p class="subtext">Create a password account first, then add a passkey for passwordless sign-in.</p>
+    </div>
 
-    <!-- User Credentials -->
-    <input id="email" placeholder="Email address" />
-    <input id="password" type="password" placeholder="Password" />
+    <div class="alert alert--error" id="uiAlert" hidden></div>
 
-    <button class="btn-password" onclick="register()">
-      Register User
-    </button>
+    <div class="form">
+      <div>
+        <label for="email">Email</label>
+        <input id="email" placeholder="name@example.com" autocomplete="username" />
+      </div>
 
-    <div class="divider">
-      After registering, secure your account with a passkey
+      <div>
+        <label for="password">Password</label>
+        <input id="password" type="password" placeholder="••••••••" autocomplete="new-password" />
+        <p class="hint" style="text-align: left; margin-top: 4px;">Use a unique password.</p>
+      </div>
+
+      <button class="btn-password" type="button" onclick="register()">
+        Register User
+      </button>
+    </div>
+
+    <div class="divider-line">
+      <span>Passkeys</span>
     </div>
 
     <!-- Passkey Registration -->
-    <button class="btn-passkey" id="passkeyBtn">
+    <button class="btn-passkey" id="passkeyBtn" type="button">
       Register Passkey (FIDO2)
     </button>
+
+    <p class="small">Note: Passkey registration requires a supported browser and a secure context (HTTPS or localhost).</p>
+
+    <div style="text-align: center; margin-top: 1rem;">
+       <a href="index.html" style="color: #94a3b8; font-size: 0.85rem;">&larr; Back to Home</a>
+    </div>
   </div>
 
   <!-- Password / User Registration Logic -->

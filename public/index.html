@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Authentication Prototype</title>
 
   <!-- Global Professional Styling -->
@@ -10,23 +11,28 @@
 <body>
 
   <div class="container">
-    <h1>Authentication Prototype</h1>
+    <div class="card__header">
+      <h1>Authentication Prototype</h1>
+      <p class="subtext">Demonstration of Password, MFA, and Passkey (FIDO2/WebAuthn) authentication.</p>
+    </div>
 
-    <p style="text-align:center; color:#94a3b8; margin-bottom:24px;">
-      Demonstration of Password, MFA, and Passkey (FIDO2/WebAuthn) Authentication
-    </p>
+    <div class="form">
+      <a href="register.html">
+        <button class="btn-password" type="button">
+          Register New User
+        </button>
+      </a>
 
-    <a href="register.html">
-      <button class="btn-password">
-        Register New User
-      </button>
-    </a>
+      <div class="divider-line">
+        <span>OR</span>
+      </div>
 
-    <a href="login.html">
-      <button class="btn-passkey">
-        Login to System
-      </button>
-    </a>
+      <a href="login.html">
+        <button class="btn-passkey" type="button">
+          Login to System
+        </button>
+      </a>
+    </div>
   </div>
 
 </body>

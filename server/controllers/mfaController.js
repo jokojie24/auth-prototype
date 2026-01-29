@@ -34,7 +34,15 @@ export const verifyOTP = (req, res) => {
       }
 
       req.session.user = user.id;
+      req.session.mfaVerified = true;
       res.json({ message: "MFA login successful" });
     }
   );
+};
+
+export const requireMFA = (req, res, next) => {
+  if (req.session.user && req.session.mfaVerified) {
+    return next();
+  }
+  res.status(401).json({ error: "MFA required" });
 };
